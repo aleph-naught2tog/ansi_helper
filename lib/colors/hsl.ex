@@ -61,7 +61,7 @@ defmodule Hsl do
       {lightness / scale, :unit}
     end
     
-    def relative_luminance(red, green, blue, \\ :sRGB) do
+    def relative_luminance(red, green, blue, space \\ :sRGB) do
       0.2126 * red + 0.7152 * green + 0.0722 * blue
     end
   end
