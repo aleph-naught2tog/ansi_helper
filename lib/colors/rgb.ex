@@ -1,0 +1,3 @@
+defmodule Rgb do
+  
+end
