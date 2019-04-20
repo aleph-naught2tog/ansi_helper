@@ -2,15 +2,15 @@ defmodule Colors do
   def show() do
     range = 0..5
     message = "hello"
-    message_length = String.length(message)
-    cell_width = 5 # 'G=?  '
-    header = Enum.join(Enum.map(range, fn value -> 
+    # message_length = String.length(message)
+    # cell_width = 5 # 'G=?  '
+    header = Enum.join(Enum.map(range, fn value ->
       " B=#{value} "
     end), " ")
 
     Enum.each(range, fn one ->
       red_message = underline() <> "R=#{one}" <> reset()
-      
+
       IO.write(red_message)
       IO.write("  ")
       IO.write(underline() <> header <> reset())
@@ -19,7 +19,7 @@ defmodule Colors do
       Enum.each(range, fn two ->
         green_message = underline() <> "G=#{two}" <> reset() <> "  "
         IO.write(green_message)
-        
+
         Enum.each(range, fn three ->
           string = IO.ANSI.color(one, two, three) <> message <> IO.ANSI.reset()
           IO.write(string <> " ")
@@ -27,7 +27,7 @@ defmodule Colors do
 
         IO.write("\n")
       end)
-      
+
       IO.write("\n")
     end)
   end

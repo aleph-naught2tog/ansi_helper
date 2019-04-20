@@ -60,8 +60,8 @@ defmodule Hsl do
     def relative_luminance({lightness, scale}) do
       {lightness / scale, :unit}
     end
-    
-    def relative_luminance(red, green, blue, space \\ :sRGB) do
+
+    def relative_luminance(red, green, blue, _space \\ :sRGB) do
       0.2126 * red + 0.7152 * green + 0.0722 * blue
     end
   end
@@ -92,7 +92,7 @@ defmodule Hsl do
     {one_relative, :unit} = Lightness.relative_luminance(first.lightness)
     {two_relative, :unit} = Lightness.relative_luminance(second.lightness)
     both = [one_relative, two_relative]
-    
+
     # from the WCAG standard
     lightest = Math.max(both) + 0.05
     darkest = Math.min(both) + 0.05
